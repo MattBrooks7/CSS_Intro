@@ -34,8 +34,7 @@ body {
   flex-direction: column;
 }
 
-header,
-footer {
+header, footer {
   position: sticky;
   background-color: #1e293b;
   color: whitesmoke;
@@ -55,12 +54,17 @@ nav {
   justify-content: space-evenly;
 }
 
-nav a, nav a:visited {
+nav a:any-link{
     color: #000;
 }
 
-nav a:hover, nav a:focus {
+nav :is(a:hover, 
+nav a:focus) {
     color: hsla(0, 0%, 20%, .6);
+}
+
+nav a:active {
+  color: red;
 }
 
 main {
@@ -90,6 +94,10 @@ footer {
     align-items: center;
 }
 
+.card:target {
+  border: 2px solid rebeccapurple;
+}
+
 .card figure {
     display: flex;
     flex-flow: column nowrap;
@@ -100,11 +108,52 @@ footer {
     border-radius: 50%;
 }
 
+.card img:not([alt]) {
+  border: 10px solid red;
+}
+
+.card:nth-child(even){
+  background-color: papayawhip;
+}
+
 .card figcaption {
     font-weight: bolder;
     font-size: 2rem;
     margin: 1rem;
     text-align: center;
+}
+
+/* .card figcaption::after {
+  font-size: 3rem;
+} */
+
+.card figcaption::after {
+  content: ' ✨';
+  display: block;
+}
+
+.card figcaption::first-line {
+  font-size: 3rem;
+}
+
+.card p {
+  position: relative;
+}
+
+.card p::before {
+  content: open-quote;
+  font-size: 3em;
+  position: absolute;
+  top: -.25em;
+  left: -.5em;
+}
+
+.card p::after {
+  content: close-quote;
+  font-size: 3em;
+  position: absolute;
+  top: -.25em;
+  right: -.5em;
 }
 
 /* || SMALL */
